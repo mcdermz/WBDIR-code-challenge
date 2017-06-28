@@ -9,11 +9,15 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 $('#file-upload').on('change', function (e){
   const file = e.target.files[0]
   const reader = new FileReader()
+
   reader.onload = function (e){
     const text = e.target.result
-    $('#render').text(text)
+    $('#render').html(htmlify(text))
   }
 
   reader.readAsText(file)
-
 })
+
+function htmlify(text) {
+  return '<h1>hello world<h1>'
+}
