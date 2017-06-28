@@ -18,6 +18,11 @@ $('#file-upload').on('change', function (e){
   reader.readAsText(file)
 })
 
-function htmlify(text) {
-  return '<h1>hello world<h1>'
+function htmlify(string) {
+  const text = JSON.parse(string)
+
+  return `<${text[0].tag}>
+    <${text[0].content.tag}>${text[0].content.content}</${text[0].content.tag}>
+  </${text[0].tag}>`
+  
 }
