@@ -20,9 +20,13 @@ $('#file-upload').on('change', function (e){
 
 function htmlify(string) {
   const text = JSON.parse(string)
+  const htmlToRender = generateHtml(text)
 
+  return htmlToRender
+}
+
+function generateHtml(text) {
   return `<${text[0].tag}>
     <${text[0].content.tag}>${text[0].content.content}</${text[0].content.tag}>
   </${text[0].tag}>`
-  
 }
