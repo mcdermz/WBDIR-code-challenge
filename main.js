@@ -28,11 +28,12 @@ function htmlify(string) {
 }
 
 function generateHtml(text) {
-
   if (typeof text === 'string') {
     return text
   } else if (Array.isArray(text)) {
-    return generateHtml(text[0])
+    return text.reduce((a,b) => {
+      return generateHtml(a) + generateHtml(b)
+    },'')
   } else {
     return `<${text.tag}>${generateHtml(text.content)}</${text.tag}>`
   }
